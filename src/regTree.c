@@ -34,8 +34,8 @@ void regTree(double *x, double *y, int mdim, int nsample, int *lDaughter,
     int ndstart, ndend, ndendl, nodecnt, jstat, msplit;
     double d, ss, av, decsplit, ubest, sumnode;
 
-    nodestart = (int *) Calloc(nrnodes, int);
-    nodepop   = (int *) Calloc(nrnodes, int);
+    nodestart = (int *) R_Calloc(nrnodes, int);
+    nodepop   = (int *) R_Calloc(nrnodes, int);
 
     /* initialize some arrays for the tree */
     zeroInt(nodestatus, nrnodes);
@@ -44,7 +44,7 @@ void regTree(double *x, double *y, int mdim, int nsample, int *lDaughter,
     zeroDouble(avnode, nrnodes);
 
 
-    jdex = (int *) Calloc(nsample, int);
+    jdex = (int *) R_Calloc(nsample, int);
     for (i = 1; i <= nsample; ++i) jdex[i-1] = i;
 
     ncur = 0;
@@ -140,9 +140,9 @@ void regTree(double *x, double *y, int mdim, int nsample, int *lDaughter,
             nodestatus[k] = NODE_TERMINAL;
         }
     }
-    Free(nodestart);
-    Free(jdex);
-    Free(nodepop);
+    R_Free(nodestart);
+    R_Free(jdex);
+    R_Free(nodepop);
     
 }
 
@@ -156,20 +156,20 @@ void findBestSplit(double *x, int *jdex, double *y, int mdim, int nsample,
     double *xt, *ut, *v, *yl, sumcat[32], avcat[32], tavcat[32], ubestt, wsel ,jk;
     double crit, critmax, critvar, suml, sumr, d, critParent, *weights, *sumweights, sww;
 
-    ut = (double *) Calloc(nsample, double);
-    xt = (double *) Calloc(nsample, double);
-    v  = (double *) Calloc(nsample, double);
-    yl = (double *) Calloc(nsample, double);
+    ut = (double *) R_Calloc(nsample, double);
+    xt = (double *) R_Calloc(nsample, double);
+    v  = (double *) R_Calloc(nsample, double);
+    yl = (double *) R_Calloc(nsample, double);
 
-    mind  = (int *) Calloc(mdim, int);
-    ncase = (int *) Calloc(nsample, int);
+    mind  = (int *) R_Calloc(mdim, int);
+    ncase = (int *) R_Calloc(nsample, int);
     zeroDouble(avcat, 32);
     zeroDouble(tavcat, 32);
 
    
     mindo=mdim+1;
-    weights =      (double *) Calloc(mdim, double);
-    sumweights =      (double *) Calloc(mindo, double);
+    weights =      (double *) R_Calloc(mdim, double);
+    sumweights =      (double *) R_Calloc(mindo, double);
     
     /* START BIG LOOP */
     *msplit = -1;
@@ -325,14 +325,14 @@ void findBestSplit(double *x, int *jdex, double *y, int mdim, int nsample,
         }
     } else *jstat = 1;
 	
-    Free(ncase);
-    Free(mind);
-    Free(v);
-    Free(yl);
-    Free(xt);
-    Free(ut);
-    Free(weights);
-    Free(sumweights);
+    R_Free(ncase);
+    R_Free(mind);
+    R_Free(v);
+    R_Free(yl);
+    R_Free(xt);
+    R_Free(ut);
+    R_Free(weights);
+    R_Free(sumweights);
     
     
 }

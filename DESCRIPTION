@@ -1,5 +1,5 @@
 Package: iRafNet
-Version: 1.1-1
+Version: 1.1.1.9001
 Date: 2016-10-26
 Title: Integrative Random Forest for Gene Regulatory Network Inference
 Authors@R: c(person("Francesca", "Petralia", role = c("aut", "cre"),
@@ -14,6 +14,7 @@ Authors@R: c(person("Francesca", "Petralia", role = c("aut", "cre"),
 Depends: R (>= 3.0.0)
 Imports: ROCR
 Description: Provides a flexible integrative algorithm that allows information from prior data, such as protein protein interactions and gene knock-down, to be jointly considered for gene regulatory network inference.
+    Compatibility updates by Renova.
 License: GPL (>= 2)
 URL: https://www.r-project.org
 Packaged: 2016-10-26 00:46:40 UTC; petraf01
